@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Appenders>
+		<NoSql name="MongoDbAppender">
+			<MongoDb databaseName="test" collectionName="testlogs" port="9999" server="localhost"/>
+		</NoSql>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="CONSOLE %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO">
+			<AppenderRef ref="Console" />
+		</Root>
+		<Logger name="es.rvillalba" level="DEBUG">
+			<AppenderRef ref="MongoDbAppender" />
+		</Logger>
+	</Loggers>
+</Configuration>
